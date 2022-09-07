@@ -67,4 +67,11 @@ class RestaurantTest {
                 () -> restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void selecting_an_item_should_update_the_total() {
+        restaurant.selectItem("Sweet corn soup");
+        double TotalBill = restaurant.getTotalBill();
+        assertNotNull(TotalBill);
+    }
 }
