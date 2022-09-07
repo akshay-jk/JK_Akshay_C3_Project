@@ -5,6 +5,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -70,8 +71,11 @@ class RestaurantTest {
 
     @Test
     public void selecting_an_item_should_update_the_total() {
+        restaurant.addToMenu("Sweet corn soup", 119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
         restaurant.selectItem("Sweet corn soup");
-        double TotalBill = restaurant.getTotalBill();
-        assertNotNull(TotalBill);
+        restaurant.selectItem("Vegetable lasagne");
+        double TotalBill = restaurant.totalBillOfSelected();
+        assertNotEquals(0.0, TotalBill);
     }
 }
